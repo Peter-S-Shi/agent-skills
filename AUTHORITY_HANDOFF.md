@@ -1,20 +1,19 @@
 # M5 Authority and Publication Handoff
 
-This is a cutover procedure, **not** a declaration that publication, repository retirement, or authority transfer has already occurred. Read [PROJECT_STATUS.md](PROJECT_STATUS.md) alongside GitHub's actual repository visibility, checks, and source READMEs.
+**Status: completed on 2026-10-20.** The unified `agent-skills` repository is Public with the Owner-approved MIT license; all three former source repositories have published migration notices. This is the completed authority-transfer record, not authorization to archive or delete those repositories or modify agent-local installations. Read [PROJECT_STATUS.md](PROJECT_STATUS.md) for current facts.
 
-## Release and authority gates
+## Completed release and authority gates
 
-1. Merge the MIT/publication-preparation PR only after reviewing its precise diff, source rights, privacy-sensitive contents, Git commit metadata, and green PR CI. Verify the merge commit and the main-push CI.
-2. Confirm the package content still matches the pinned sources in [PROVENANCE.md](PROVENANCE.md) (apart from the documented portfolio frontmatter normalization). If any old source advanced, review the delta before cutover; never silently overwrite either version.
-3. Before changing visibility, re-check the **entire public Git history**, not only the working tree. Owner has accepted retention of the present author-email metadata. Confirm no other unapproved confidential source, secrets, or private Session data would become public.
-4. Only after the release gate passes, change `Peter-S-Shi/agent-skills` from Private to Public and verify anonymous access to all three active `SKILL.md` files, the opt-in legacy package, and [LICENSE](LICENSE). Keep the original historical `agent-token-ledger` Private.
-5. Publish the source-repository README migration notices below, scoped to documentation only. Verify all notices link to the now-public canonical repository and that no source Skill is being edited in parallel.
-6. **Only then declare update-authority cutover complete.** Future changes to the four packages belong in `agent-skills`; source repositories remain discoverable historical snapshots. Local installed copies do not update themselves; follow a separate approved installation/cleanup pilot.
-7. Repository archiving, deletion, and local Skill removal are independently gated decisions, not part of this publication handoff. Preserve `agent-token-ledger`'s `legacy-desktop-v0.2.0` recovery tag and history.
+1. **MIT license and Git history:** Owner approved MIT and retention of existing author metadata; publication-preparation [PR #2](https://github.com/Peter-S-Shi/agent-skills/pull/2) merged at `ffcc10c9dde021f2fd4f65a652f2f64d4c646784`. Both PR and merged-main Skills CI succeeded.
+2. **Source equivalence:** the M5-P1 audit matched pinned source blobs except the disclosed semantically equivalent YAML description normalization for `portfolio-packaging`. Before handoff, each source's latest main matched its pinned source commit; the only subsequent differences are documented migration notices.
+3. **Visibility and license:** GitHub repository metadata confirms `Peter-S-Shi/agent-skills` is Public, with the [MIT License](LICENSE) and the three active and one opt-in legacy `SKILL.md` paths present in the main repository tree. GitHub API checks confirmed paths; unauthenticated HTTP/browser checks were not independently available in this environment. The separate historical `agent-token-ledger` stays Private.
+4. **Source README notices:** all three migration notices below were published to original repository main branches. Verified commits: `agent-token-ledger@232e0bd1c796f65a1b6370364d23ddf0abfaf78f`, `portfolio-packaging@a969adc60c0ddc27080a5fce93206b5a5cbf0efc`, and `codex-session-review@5fc15fda79f47e56f11e38f6f31e6ff59d37d922`. Only documentation changed.
+5. **Canonical source switch:** effective after those notices, `agent-skills` is now the sole maintained update origin for all four included packages. Historical source repositories are retained as readable/reference copies, not independently updated packages.
+6. **Not included:** no agent-local Skill installation, synchronization, repository archiving, deletion, or cleanup. Preserve `agent-token-ledger`'s `legacy-desktop-v0.2.0` tag and original Git history.
 
-## Ready-to-publish source README notices
+## Published source README notices
 
-Insert these at the top of each source README **when the new repository is public and the switch is approved**, not before.
+The following notices now appear near the top of their corresponding source READMEs. They are preserved here as exact handoff evidence, not pending instructions.
 
 ### `Peter-S-Shi/agent-token-ledger` (historical Private project)
 
