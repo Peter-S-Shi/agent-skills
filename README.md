@@ -12,4 +12,8 @@ Install only the desired folder from `skills/` into an agent's supported Skills 
 
 [`legacy/codex-session-review`](legacy/codex-session-review/SKILL.md) preserves the earlier Codex-specific cleaner and report workflow. It is outside `skills/` and is **not** part of default discovery or installation. Select it explicitly only when that specialized legacy behavior is needed; it is not equivalent to the active `agent-session-review`.
 
-See [PROVENANCE.md](PROVENANCE.md) for the pinned source commits and migration boundaries. [PROJECT_STATUS.md](PROJECT_STATUS.md) records the release and maintenance-authority decisions; copying Skill files into this collection does not itself transfer their update authority.
+## License and maintenance
+
+This collection is released under the [MIT License](LICENSE). It contains the Owner's selected Skill sources, not third-party integration packages. Optional third-party integrations retain their own upstream terms.
+
+See [PROVENANCE.md](PROVENANCE.md) for pinned source commits, [PROJECT_STATUS.md](PROJECT_STATUS.md) for current release and maintenance authority, and [AUTHORITY_HANDOFF.md](AUTHORITY_HANDOFF.md) for the controlled source-of-truth handoff. Merely copying a Skill here does not change which repository maintains it.
