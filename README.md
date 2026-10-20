@@ -12,6 +12,12 @@ Install only the desired folder from `skills/` into an agent's supported Skills 
 
 [`legacy/codex-session-review`](legacy/codex-session-review/SKILL.md) preserves the earlier Codex-specific cleaner and report workflow. It is outside `skills/` and is **not** part of default discovery or installation. Select it explicitly only when that specialized legacy behavior is needed; it is not equivalent to the active `agent-session-review`.
 
+## Accounting scope and possible API extension
+
+[`agent-usage-accounting`](skills/agent-usage-accounting/SKILL.md) accounts for usage only within the scope of trustworthy, accessible native session records or counters. Current evidence is bounded: full cross-session, cross-provider, and project-level coverage is not guaranteed, and missing usage must be reported as unavailable rather than invented.
+
+**Paid API usage and billing:** This release has no implemented and validated provider-API billing/accounting integration. It is **not** an API cost tracker. A future provider-specific extension may account for actual paid API calls, usage, and billed amounts, but only after real API usage/billing evidence, appropriate access, and a funded test budget are available for independent verification. That work is deferred; no API purchase or key is required for the currently released Skills.
+
 ## License and maintenance
 
 This collection is released under the [MIT License](LICENSE). It contains the Owner's selected Skill sources, not third-party integration packages. Optional third-party integrations retain their own upstream terms.
