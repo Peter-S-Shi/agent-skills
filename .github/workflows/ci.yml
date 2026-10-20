@@ -1,0 +1,47 @@
+name: Skills CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: skills-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Validate active independent Skills
+        run: >-
+          python tools/validate_skills.py
+          skills/agent-usage-accounting
+          skills/agent-session-review
+          skills/portfolio-packaging
+      - name: Preserve legacy isolation and syntax
+        run: |
+          python -c "from pathlib import Path; root=Path('legacy/codex-session-review'); assert (root/'SKILL.md').is_file(); assert not Path('skills/codex-session-review').exists(); p=root/'scripts/clean_codex_sessions.py'; compile(p.read_text(encoding='utf-8'), str(p), 'exec'); print('Legacy package isolated and syntactically valid')"
+      - name: Check full event patch whitespace
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            git diff --check "$PR_BASE_SHA" HEAD
+          elif [[ "$PUSH_BEFORE_SHA" =~ ^0+$ ]]; then
+            git diff --check "$(git hash-object -t tree /dev/null)" HEAD
+          else
+            git diff --check "$PUSH_BEFORE_SHA" HEAD
+          fi

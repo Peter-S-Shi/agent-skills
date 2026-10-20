@@ -1,0 +1,6 @@
+# Third-party integrations are local-only by default.
+# Keep only the integration policy files tracked.
+
+*
+!.gitignore
+!README.md
